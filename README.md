@@ -26,3 +26,18 @@ ajax设计方案封装库
     4. 发送和获取数据时，可以获取进度信息；   
     5. 可以设置请求的超时时间；   
 
+####开始准备如下：
+  1. 纯前端代码
+  2. nginx反向代理服务器（前后端分离用）
+  3. 后台2套接口（端口：1122，端口：2211）  PS：一份必须支持跨域请求
+  4. IIS服务器（部署后台接口）
+  5. chrome插件postman（接口测试）
+  6. IE、chrome、firefox、Opera、safari、edge 6大浏览器，做兼容性测试
+  
+###XMLHttpRequest发送请求步骤：
+  1. 实例化XMLHttpRequest对象（IE8-9是微软封装的ActiveXObject('Microsoft.XMLHTTP')）获得一个实例
+  2. 通过实例open一个请求，设置发送类型和接口以及同异步
+  3. 如有需要配置报文，以及各种事件（success，error，timeout等）
+  4. IIS服务器（部署后台接口）
+  5. 调用实例的send方法，发送http/https的请求
+  6. 服务器回调，客户端接收，并做响应处理
