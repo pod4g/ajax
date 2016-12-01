@@ -13,7 +13,7 @@ ajax设计方案封装库
   * ajax：是一种技术方案，依赖的是CSS/HTML/Javascript，最核心依赖是浏览器提供的XMLHttpRequest对象，这个对象使得浏览器可以发出HTTP请求与接收HTTP响应。 
   * nginx：是一个高性能的HTTP和反向代理服务器    
   * IIS:微软开发的的服务器，window系统自带  
-* XMLHttpRequest Level 1主要存在以下缺点：
+  * XMLHttpRequest Level 1主要存在以下缺点：
 1. 受同源策略的限制，不能发送跨域请求；
 2. 不能发送二进制文件（如图片、视频、音频等），只能发送纯文本数据；
 3. 发送和获取数据的过程中，无法实时获取进度信息，只能判断是否完成；
