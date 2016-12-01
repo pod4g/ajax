@@ -171,17 +171,12 @@ ajax设计方案封装库
 ######edge
   ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129231145693-678151401.png)
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+####具体代码已封装成一个js库，供大家根据项目需求，自己开发定制，不过我已经封装了一些常用请求
+  * 异步get请求  --  ajax.get
+  * 异步post请求  --  ajax.post
+  * 同步get请求  --  ajax.get_sync
+  * 同步post请求  --  ajax.post_sync
+  * 跨域get请求  --  ajax.get_cross
+  * 跨域post请求  --  ajax.post_cross
+  * 通用配置请求  --  ajax.common
+  PS：该方法为方便使用，不用的可以直接使用精简版本，只有common方法 
