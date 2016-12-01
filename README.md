@@ -106,7 +106,7 @@ ajax设计方案封装库
 
     xhr.send((function(result){this.postParam == undefined?(result =null):(result=this.postParam);return result;})(this.postParam));
 
-###测试代码如下：
+####测试代码如下：
 #####前端同源测试代码
     ajax.post("/api/ajax1/ajaxT1/",{"name":"测试异步post请求","age":"success"},function(data){alert(data)});  //该接口在1122上
 #####前端跨域测试代码
@@ -135,11 +135,42 @@ ajax设计方案封装库
         String result = "1J跨域成功:" + name + "-" + age;
         return result;
     }
-  
-  
-  
-  
-  
+    
+####下面是各种浏览器的测试结果（仅提供同源post请求和跨域post请求）：
+#####同源测试
+######chrome
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129230238927-2089656702.png)
+######IE8-9
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129230248709-1923043215.png)
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129230306302-1703939611.png)
+######IE10+
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129230347068-1928619242.png)
+######firefox
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129230452615-113489743.png)
+######opera
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129230611365-1169854535.png)
+######safari
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129230713615-2040676482.png)
+######edge
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129230814818-1130849183.png)
+
+#####跨域测试
+######chrome
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129230913599-1189375449.png)
+######IE8-9
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129230942302-1611540664.png)
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129230956990-1637046338.png)
+######IE10+
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129231021209-1271264367.png)
+######firefox
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129231044943-1370903842.png)
+######opera
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129231104552-1637987456.png)
+######safari
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129231127834-855103713.png)
+######edge
+  ![](http://images2015.cnblogs.com/blog/801930/201611/801930-20161129231145693-678151401.png)
+  
   
   
   
