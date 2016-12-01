@@ -41,3 +41,94 @@ ajax设计方案封装库
   4. IIS服务器（部署后台接口）
   5. 调用实例的send方法，发送http/https的请求
   6. 服务器回调，客户端接收，并做响应处理
+  
+####核心代码：
+    //创建xhr对象
+    var xhr = createXhrObject();
+
+    //针对某些特定版本的mozillar浏览器的BUG进行修正
+    xhr.overrideMimeType?(xhr.overrideMimeType("text/javascript")):(null);
+
+    //针对IE8的xhr做处理 PS：ie8下的xhr无xhr.onload事件，所以这里做判断
+    xhr.onload===undefined?(xhr.xhr_ie8=true):(xhr.xhr_ie8=false);
+
+    //参数处理（get和post）,包括xhr.open     get:拼接好url再open   post:先open，再设置其他参数
+    ajaxSetting.data === ""?(null):(xhr = dealWithParam(ajaxSetting,this,xhr));
+
+    //设置超时时间（只有异步请求才有超时时间）
+    ajaxParam.async?(xhr.timeout = ajaxSetting.time):(null);
+
+    //设置http协议的头部
+    each(ajaxSetting.requestHeader,function(item,index){xhr.setRequestHeader(index,item)});
+    //onload事件（IE8下没有该事件）
+    xhr.onload = function(e) {
+        if(this.status == 200||this.status == 304){
+            ajaxSetting.dataType.toUpperCase() == "JSON"?(ajaxSetting.success(JSON.parse(xhr.responseText))):(ajaxSetting.success(xhr.responseText));
+        }else{
+            /*
+             *  这边为了兼容IE8、9的问题，以及请求完成而造成的其他错误，比如404等
+             *   如果跨域请求在IE8、9下跨域失败不走onerror方法
+             *       其他支持了Level 2 的版本 直接走onerror
+             * */
+            ajaxSetting.error(e.currentTarget.status, e.currentTarget.statusText);
+        }
+    };
+
+    //xmlhttprequest每次变化一个状态所监控的事件（可拓展）
+    xhr.onreadystatechange = function(){
+        switch(xhr.readyState){
+            case 1://打开
+                //do something
+                break;
+            case 2://获取header
+                //do something
+                break;
+            case 3://请求
+                //do something
+                break;
+            case 4://完成
+                //在ie8下面，无xhr的onload事件，只能放在此处处理回调结果
+                xhr.xhr_ie8?((xhr.status == 200 || xhr.status == 304)?(ajaxSetting.dataType.toUpperCase() == "JSON"?(ajaxSetting.success(JSON.parse(xhr.responseText))):(ajaxSetting.success(xhr.responseText))):(null)):(null);
+                break;
+        };
+    };
+
+    //ontimeout超时事件
+    xhr.ontimeout = function(e){
+        ajaxSetting.timeout(999,e?(e.type):("timeout"));   //IE8 没有e参数
+        xhr.abort();  //关闭请求
+    };
+
+    //错误事件，直接ajax失败，而不走onload事件
+    xhr.onerror = function(e){
+        ajaxSetting.error();
+    };
+
+    xhr.send((function(result){this.postParam == undefined?(result =null):(result=this.postParam);return result;})(this.postParam));
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
