@@ -105,14 +105,36 @@ ajax设计方案封装库
     };
 
     xhr.send((function(result){this.postParam == undefined?(result =null):(result=this.postParam);return result;})(this.postParam));
-  
-  
-  
-  
-  
-  
-  
-  
+
+###测试代码如下：
+####前端同源测试代码
+    ajax.post("/api/ajax1/ajaxT1/",{"name":"测试异步post请求","age":"success"},function(data){alert(data)});  //该接口在1122上
+####前端跨域测试代码
+    ajax.post_cross("http://192.168.0.3:2211/api/weixin/ajaxT2/",{"name":"测试跨域post请求","age":"success"},function(data){alert(data)});
+####后端跨域接口代码
+    /// <summary>
+    /// 测试跨域请求
+    /// </summary>
+    /// <param name="module"></param>
+    /// <returns></returns>
+    [Route("ajaxT2")]
+    public String kuaAjaxT2([FromBody]TModule module)
+    {
+      String result = "跨域post传输成功："+module.name+"-"+module.age;
+      return result;
+    }
+####后端同源接口代码
+    /// <summary>
+    /// 测试ajax同源请求
+    /// </summary>
+    /// <param qwer="code"></param>
+    /// <returns>result</returns>
+    [Route("ajaxT2")]
+    public String GetkuaAjaxT1(string name,string age)
+    {
+        String result = "1J跨域成功:" + name + "-" + age;
+        return result;
+    }
   
   
   
