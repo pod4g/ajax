@@ -27,12 +27,12 @@ ajax设计方案封装库
     5. 可以设置请求的超时时间；   
 
 ####开始准备如下：
-  1. 纯前端代码
-  2. nginx反向代理服务器（前后端分离用）
-  3. 后台2套接口（端口：1122，端口：2211）  PS：一份必须支持跨域请求
-  4. IIS服务器（部署后台接口）
-  5. chrome插件postman（接口测试）
-  6. IE、chrome、firefox、Opera、safari、edge 6大浏览器，做兼容性测试
+  * 纯前端代码
+  * nginx反向代理服务器（前后端分离用）
+  * 后台2套接口（端口：1122，端口：2211）  PS：一份必须支持跨域请求
+  * IIS服务器（部署后台接口）
+  * chrome插件postman（接口测试）
+  * IE、chrome、firefox、Opera、safari、edge 6大浏览器，做兼容性测试
   
 ###XMLHttpRequest发送请求步骤：
   1. 实例化XMLHttpRequest对象（IE8-9是微软封装的ActiveXObject('Microsoft.XMLHTTP')）获得一个实例
